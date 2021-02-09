@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="id=edge">
+		<title>Ask-Answer</title>
+	</head>
+	<body>
+		<h1>Ask-Answer</h1>
+		<hr>
+		<h3>Lista de perguntas</h3>
+
+		<p>Nome: <b><%= name %></b></p>
+		<p>Tipo de pergunta: <b><%= type %></b></p>
+
+		<% if(showMsg == true){ %>
+			<h3>Mensagem de erro!</h3>
+		<% }else{ %>
+			<h3>Tudo ok com o site</h3>
+		<%}%>
+
+		<% products.forEach((product) => {%>
+			<hr>
+			<p>Nome do Produto: <%= product.name %></p>
+			<p>Preço: <%= product.price %></p>
+		<% });%>
+
+	</body>
+</html>
