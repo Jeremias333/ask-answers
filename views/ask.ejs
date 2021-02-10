@@ -5,42 +5,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="id=edge">
 		<title>Ask-Answer</title>
-		<link rel="stylesheet" type="text/css" href="/css/root.css">
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/root.css">
 	</head>
 	<body>
-		<div align="center"><img align="center" src="/img/logo_invert.jpg"></div>
-		<h1>Style 12..3</h1>
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- <hr>
-		<h3>Lista de perguntas</h3>
-
-		<p>Nome: <b><%# = name %></b></p>
-		<p>Tipo de pergunta: <b><%#= type %></b></p>
-
-		<%# if(showMsg == true){ %>
-			<h3>Mensagem de erro!</h3>
-		<%# }else{ %>
-			<h3>Tudo ok com o site</h3>
-		<%#}%>
-
-		<%# products.forEach((product) => {%>
-			<hr>
-			<p>Nome do Produto: <%# = product.name %></p>
-			<p>Preço: <%#= product.price %></p>
-		<%# });%> -->
-		<!-- <%# = incluide("partials/header.ejs")  -->
+		<nav class="navbar navbar-light">
+			<a href="/" class="nav-brand"><img align="center" src="/img/logo_invert.jpg"></a>
+		</nav>
+		<div class="container">
+			<!-- <div align="center"></div>	 -->
+			<br>
+			<div class="card" id="form-ask">
+				<div class="card-header">
+					<b>Faça uma pergunta...</b>
+				</div>
+				<div class="card-body">
+					<form>
+						<label>Título</label>
+						<input type="text" class="form-control" name="" placeholder="Título"> <br>
+						<label>Descrição</label>
+						<textarea class="form-control" placeholder="Descreva sua pergunta"></textarea><br>
+						<button class="btn btn-success">ASK!</button>
+					</form>
+				</div>	
+			</div>
+		</div>
 	</body>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
