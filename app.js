@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const conn = require("./database/database");
+const AskModel = require("./database/Ask");
 var port = 3001;
 
 //conectando
@@ -21,7 +22,14 @@ app.use(bodyParser.json());
 
 //routes
 app.get("/", (req, res) => {
-	res.render("index");
+	AskModel.findAll({raw:true, order:[
+		['id', 'DESC'] //ordenação
+		]}).then(asks => {
+			res.render("index", { //enviando json de valores para o front.
+				asks: asks
+			});
+	});
+
 });
 
 app.get("/ask", (req, res) => {
@@ -34,7 +42,15 @@ app.post("/save-ask", (req, res) => {
 	var title = req.body.title;
 	var describe = req.body.describe;
 
-	res.send("Dados foram: "+ title + describe)
+	AskModel.create({
+		title: title,
+		describe: describe
+	}).then(() => {
+		console.log("success");
+		res.redirect("/");
+	}).catch((err) => {
+		console.log(err);
+	});
 });
 
 app.listen(port, () => {console.log("Aplicação rodando na porta: "+ port)})
