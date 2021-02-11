@@ -1,7 +1,15 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const conn = require("./database/database");
 var port = 3001;
+
+//conectando
+conn.authenticate().then(() => {
+	console.log("Conexão bem sucedida");
+}).catch((err) => {
+	console.log(err);
+});
 
 //config frontend denpendencies
 app.set("view engine", "ejs");
