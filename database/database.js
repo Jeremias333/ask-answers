@@ -1,8 +1,11 @@
 const Sequelize = require('sequelize');
+require('dotenv/config');
 
-const conn = new Sequelize('ask_answer', 'jeremias', '333666', {
-	host: "localhost",
-	port: 3308,
+console.log(process.env.DB_USER, process.env.PASSWORD)
+
+const conn = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+	host: process.env.DB_HOST,
+	port: parseInt(process.env.DB_PORT),
 	dialect: "mysql"
 });
 
