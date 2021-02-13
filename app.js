@@ -74,4 +74,19 @@ app.post("/save-ask", (req, res) => {
 	});
 });
 
+app.post("/save-answer", (req, res) => {
+	var body = req.body.body;
+	var askId = req.body.askId;
+
+	AnswerModel.create({
+		body: body,
+		askId: askId
+	}).then(() => {
+		console.log("success");
+		res.redirect(".")
+	}).catch((err) => {
+		console.log(err);
+	});
+});
+
 app.listen(port, () => {console.log("Aplicação rodando na porta: "+ port)})

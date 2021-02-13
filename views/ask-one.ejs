@@ -7,6 +7,12 @@
 
 		<p style="color: white"><%= ask.describe %></p>
 		<hr>
+		<form method="POST" action="/save-answer">
+			<label style="color:white">Resposta</label>
+			<textarea placeholder="Digite sua resposta" class="form-control" name="body"></textarea><br>
+			<input type="text" name="askId" value="<%= ask.id %>" hidden="">
+			<input type="submit" class="btn btn-light" value="Answer">
+		</form>
 	</div>
 </body>
 <%- include("partials/footer.ejs") %>
