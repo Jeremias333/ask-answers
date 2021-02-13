@@ -14,7 +14,7 @@ const Ask = conn.define("ask", {
 });
 
 Ask.sync({force: false}).then(() => {
-	console.log("Tabela Criada");
+	console.log("Ask table created");
 }).catch((err) => {
 	console.log(err);
 });

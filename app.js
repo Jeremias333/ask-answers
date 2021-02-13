@@ -36,6 +36,26 @@ app.get("/ask", (req, res) => {
 	res.render("ask");
 });
 
+app.get("/ask/:id", (req, res) => {
+	var id = req.params.id;
+
+	AskModel.findOne({
+		where:{id:id}
+	}).then((ask) => {
+		if(ask != undefined){
+
+			res.render("ask-one", {
+				ask: ask
+			});
+
+		}else{
+			res.redirect("/");
+		}
+	}).catch((err) => {
+		console.log(err);
+	});
+});
+
 app.post("/save-ask", (req, res) => {
 	// res.send("formulário recebido");
 
