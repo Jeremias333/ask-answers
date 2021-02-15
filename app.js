@@ -45,10 +45,18 @@ app.get("/ask/:id", (req, res) => {
 	}).then((ask) => {
 		if(ask != undefined){
 
-			res.render("ask-one", {
-				ask: ask
+			AnswerModel.findAll({
+				where: {askId: ask.id},
+				order:[['id', 'DESC']]
+			}).then(answers => {
+				// console.log(typeof answers);
+				// console.log(answers.length);
+				// console.log(answers);
+				res.render("ask-one", {
+					ask: ask,
+					answers: answers
+				});
 			});
-
 		}else{
 			res.redirect("/");
 		}
@@ -74,7 +82,7 @@ app.post("/save-ask", (req, res) => {
 	});
 });
 
-app.post("/save-answer", (req, res) => {
+app.post("/save-answer/:id", (req, res) => {
 	var body = req.body.body;
 	var askId = req.body.askId;
 
@@ -83,7 +91,7 @@ app.post("/save-answer", (req, res) => {
 		askId: askId
 	}).then(() => {
 		console.log("success");
-		res.redirect(".")
+		res.redirect("/ask/"+req.params.id);
 	}).catch((err) => {
 		console.log(err);
 	});

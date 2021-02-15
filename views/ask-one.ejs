@@ -7,12 +7,27 @@
 
 		<p style="color: white"><%= ask.describe %></p>
 		<hr>
-		<form method="POST" action="/save-answer">
+		<form method="POST" action="/save-answer/<%= ask.id %>">
 			<label style="color:white">Resposta</label>
 			<textarea placeholder="Digite sua resposta" class="form-control" name="body"></textarea><br>
 			<input type="text" name="askId" value="<%= ask.id %>" hidden="">
 			<input type="submit" class="btn btn-light" value="Answer">
 		</form>
+		<hr>
+		<h3 style="color: white">Answers</h3>
+		<hr>
+		<% if(answers.length > 0) {%>
+			<% answers.forEach(answer => {%>
+				<div class="card">
+					<div class="card-body">
+						<p><%= answer.body %></p>
+					</div>
+				</div>
+				<br>
+			<% }); %>
+		<% } else {%>
+			<p style="color: white"> Nenhuma resposta ainda para esta pergunta</p>
+		<% } %>
 	</div>
 </body>
 <%- include("partials/footer.ejs") %>
